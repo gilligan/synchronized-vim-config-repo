@@ -10,3 +10,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "bundle/taglist-plus"]
+	path = bundle/taglist-plus
+	url = https://github.com/vim-scripts/taglist-plus.git

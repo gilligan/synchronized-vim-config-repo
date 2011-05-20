@@ -13,3 +13,9 @@
 [submodule "bundle/taglist-plus"]
 	path = bundle/taglist-plus
 	url = https://github.com/vim-scripts/taglist-plus.git
+[submodule "bundle/vim-rainbow"]
+	path = bundle/vim-rainbow
+	url = https://github.com/chrismetcalf/vim-rainbow.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

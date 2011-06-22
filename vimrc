@@ -13,8 +13,11 @@ syntax on
 filetype plugin on
 filetype indent on
 
-set ofu=syntaxcomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionTypeDiscovery = ["&completefunc:<c-x><c-u>","&omnifunc:<c-x><c-o>",]
+let g:SuperTabLongestHighlight = 1
+
+"set ofu=syntaxcomplete#Complete
+"let g:SuperTabDefaultCompletionType = "context"
 
 if has("macunix")
     if has("gui")
@@ -65,6 +68,7 @@ let TList_Display_Prototype=1
 "
 let g:slimv_keybindings=1
 let g:paredit_mode=0
+let g:slimv_impl='sbcl'
 "let g:slimv_repl_open=0
 
 " -------------------------------------------------------------------

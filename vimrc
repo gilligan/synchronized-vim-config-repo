@@ -14,10 +14,8 @@ filetype plugin on
 filetype indent on
 
 let g:SuperTabDefaultCompletionTypeDiscovery = ["&completefunc:<c-x><c-u>","&omnifunc:<c-x><c-o>",]
+let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestHighlight = 1
-
-"set ofu=syntaxcomplete#Complete
-"let g:SuperTabDefaultCompletionType = "context"
 
 if has("macunix")
     if has("gui")
@@ -37,6 +35,7 @@ set nocp
 set path+=.,/usr/share/qt4/include/**
 set inc=^\\s*\\%(#\\s*include\\\\|\\.INCLUDE\\)\\s\\+
 set expandtab
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 set background=light
 set incsearch
@@ -69,7 +68,8 @@ let TList_Display_Prototype=1
 let g:slimv_keybindings=1
 let g:paredit_mode=0
 let g:slimv_impl='sbcl'
-"let g:slimv_repl_open=0
+let g:lisp_rainbow=1
+
 
 " -------------------------------------------------------------------
 " 

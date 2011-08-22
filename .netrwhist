@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/gilligan/Development/snesdev/sfckit/examples/hello_link'
+let g:netrw_dirhist_2='/Users/gilligan/Development/snesdev/sfckit/examples'
+let g:netrw_dirhist_3='/Users/gilligan/Development/snesdev/sfckit'
+let g:netrw_dirhist_4='/Users/gilligan/Development/snesdev/sfckit/debug-link'
+let g:netrw_dirhist_5='/Users/gilligan/Development/snesdev/docs'
+let g:netrw_dirhist_6='/Users/gilligan/Development/snesdev/sfckit/examples/hello_link'
+let g:netrw_dirhist_7='/Users/gilligan/Development/snesdev/sfckit/examples'
+let g:netrw_dirhist_8='/Users/gilligan/Development/snesdev/sfckit/examples/fbuffer'
+let g:netrw_dirhist_9='/Users/gilligan/Development/snesdev/docs'

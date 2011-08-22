@@ -53,6 +53,9 @@ set guioptions-=m
 set guioptions-=l
 set guioptions-=L
 
+set nobackup
+set noswapfile
+
 " -------------------------------------------------------------------
 "
 " plugin settings

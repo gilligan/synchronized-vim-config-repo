@@ -13,6 +13,8 @@ syntax on
 filetype plugin on
 filetype indent on
 
+autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+
 let g:SuperTabDefaultCompletionTypeDiscovery = ["&completefunc:<c-x><c-u>","&omnifunc:<c-x><c-o>",]
 let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestHighlight = 1
@@ -35,7 +37,8 @@ set nocp
 set path+=.,/usr/share/qt4/include/**
 set inc=^\\s*\\%(#\\s*include\\\\|\\.INCLUDE\\)\\s\\+
 set expandtab
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 set laststatus=2
 set background=light
 set incsearch
@@ -45,7 +48,15 @@ set backspace=indent,eol,start
 set sw=4
 set sm
 set cindent
+set autoindent
 set viminfo=%,!,'50,\"100,:100,n~/.viminfo
+set showcmd
+set incsearch
+set hlsearch
+set nohidden
+set noerrorbells
+set visualbell
+set t_vb=
 
 set guioptions-=r
 set guioptions-=T
@@ -91,6 +102,9 @@ iab Ytime	<C-R>=strftime("%H:%M")<CR>
 " mappings 
 " 
 " -------------------------------------------------------------------
+
+" use jj to escape
+inoremap jj <Esc>
 
 " maximize window
 map ,M <C-W>_   

@@ -103,6 +103,9 @@ iab Ytime	<C-R>=strftime("%H:%M")<CR>
 " 
 " -------------------------------------------------------------------
 
+" use \r to run ruby code
+nmap \r :!ruby %:p<CR>    
+
 " use jj to escape
 inoremap jj <Esc>
 

@@ -15,7 +15,8 @@ filetype indent on
 
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 
-let g:SuperTabDefaultCompletionTypeDiscovery = ["&completefunc:<c-x><c-u>","&omnifunc:<c-x><c-o>",]
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestHighlight = 1
 
@@ -104,7 +105,8 @@ iab Ytime	<C-R>=strftime("%H:%M")<CR>
 " -------------------------------------------------------------------
 
 " use \r to run ruby code
-nmap \r :!ruby %:p<CR>    
+nmap \r :rubyf %:p<CR>    
+let g:rct_completion_use_fri = 1
 
 " use jj to escape
 inoremap jj <Esc>
@@ -195,7 +197,7 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iafS --extra=+q .<CR>
 com! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
 map ,kb :Kwbd<CR>
 
-map ,r :!ruby1.9 %<CR>
+map ,r :rubyf %<CR>
 
 "call make
 "map <C-m> :!make<CR>
@@ -204,6 +206,10 @@ map ,r :!ruby1.9 %<CR>
 "highlightning plugin can differentiate between 
 "warnings and errors
 let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat 
+
+autocmd FileType ruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

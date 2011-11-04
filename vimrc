@@ -14,11 +14,16 @@ filetype plugin on
 filetype indent on
 
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+autocmd BufReadPost * 
+            \ if line("'\"") > 0 && line("'\"") <= line("$") | 
+            \   exe "normal g`\"" | 
+            \ endif 
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestHighlight = 1
+
 
 if has("macunix")
     if has("gui")
@@ -31,7 +36,7 @@ if has("linux")
 endif
 
 set tags=./tags;
-set nu!
+set nu
 set cmdheight=2
 set wmh=0
 set nocp
@@ -81,8 +86,9 @@ let TList_Display_Prototype=1
 " slimv settings
 "
 let g:slimv_keybindings=1
-let g:paredit_mode=0
+let g:paredit_mode=1
 let g:slimv_impl='sbcl'
+let g:slimv_ctags='/usr/local/bin/ctags'
 let g:lisp_rainbow=1
 
 
@@ -137,9 +143,6 @@ nmap yl y1$
 
 "indent whole buffer
 map <C-i> mA1=G'A
-
-" close current buffer
-map ,b :bd<CR>
 
 " paste clipboard contents
 map ,p "*p
@@ -199,6 +202,15 @@ map ,kb :Kwbd<CR>
 
 map ,r :rubyf %<CR>
 
+" move up one line
+" and insert new indented line
+" below with Command-k
+imap <D-k> <ESC>ko 
+
+" insert empty line and
+" return to normal mode
+map <C-b> <ESC>o<ESC>
+
 "call make
 "map <C-m> :!make<CR>
 
@@ -207,9 +219,14 @@ map ,r :rubyf %<CR>
 "warnings and errors
 let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat 
 
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+"autocmd FileType ruby set omnifunc=rubycomplete#Complete
+"autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+"autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+
+if has("python")
+    command! -nargs=+ Calc :py print <args>
+    py from math import *
+endif
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

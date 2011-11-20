@@ -19,10 +19,11 @@ autocmd BufReadPost *
             \   exe "normal g`\"" | 
             \ endif 
 
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabNoCompleteAfter = ['\s']
-let g:SuperTabLongestHighlight = 1
+let g:SuperTabLongestEnhanced = 1
+"let g:SuperTabLongestHighlight = 1
 
 
 if has("macunix")
@@ -35,6 +36,10 @@ if has("linux")
     set autochdir
 endif
 
+set ignorecase
+set smartcase
+set ruler
+set cursorline
 set tags=./tags;
 set nu
 set cmdheight=2
@@ -43,6 +48,9 @@ set nocp
 set path+=.,/usr/share/qt4/include/**
 set inc=^\\s*\\%(#\\s*include\\\\|\\.INCLUDE\\)\\s\\+
 set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 set laststatus=2
@@ -104,11 +112,21 @@ iab Ydatel	<C-R>=strftime("%a %b %d %T %Z %Y")<CR>
 iab Ydatetime	<C-R>=strftime("%y%m%d %T")<CR>
 iab Ytime	<C-R>=strftime("%H:%M")<CR>
 
+iab "a &auml;
+iab "A &Auml;
+iab "o &ouml;
+iab "O &Ouml;
+iab "u &uuml;
+iab "U &Uuml;
+iab "s &szlig;
+
 " -------------------------------------------------------------------
 " 
 " mappings 
 " 
 " -------------------------------------------------------------------
+
+nnoremap <leader><space> :noh<cr>
 
 " use \r to run ruby code
 nmap \r :rubyf %:p<CR>    

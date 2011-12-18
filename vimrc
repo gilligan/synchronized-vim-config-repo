@@ -13,7 +13,7 @@ syntax on
 filetype plugin on
 filetype indent on
 
-autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+"autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 autocmd BufReadPost * 
             \ if line("'\"") > 0 && line("'\"") <= line("$") | 
             \   exe "normal g`\"" | 
@@ -29,6 +29,7 @@ let g:SuperTabLongestEnhanced = 1
 if has("macunix")
     if has("gui")
         set autochdir
+        set guifont=Inconsolata:h14
     endif
 endif
 
@@ -36,6 +37,8 @@ if has("linux")
     set autochdir
 endif
 
+set scrolloff=3
+set gdefault
 set ignorecase
 set smartcase
 set ruler
@@ -94,7 +97,7 @@ let TList_Display_Prototype=1
 " slimv settings
 "
 let g:slimv_keybindings=1
-let g:paredit_mode=1
+let g:paredit_mode=0
 let g:slimv_impl='sbcl'
 let g:slimv_ctags='/usr/local/bin/ctags'
 let g:lisp_rainbow=1
@@ -106,19 +109,29 @@ let g:lisp_rainbow=1
 " 
 " -------------------------------------------------------------------
 
+function! EatChar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunction
+
+function! MakeSpacelessIabbrev(from, to)
+    execute "iabbrev <silent> ".a:from." ".a:to."<C-R>=EatChar('\\s')<CR>"
+endfunction
+
+call MakeSpacelessIabbrev('"a', 'ä')
+call MakeSpacelessIabbrev('"A', 'Ä')
+call MakeSpacelessIabbrev('"o', 'ö')
+call MakeSpacelessIabbrev('"O', 'Ö')
+call MakeSpacelessIabbrev('"u', 'ü')
+call MakeSpacelessIabbrev('"U', 'Ü')
+call MakeSpacelessIabbrev('"s', 'ß')
+
 iab Ydate	<C-R>=strftime("%y%m%d")<CR>
 iab Ydated	<C-R>=strftime("%Y-%m-%d")<CR>
 iab Ydatel	<C-R>=strftime("%a %b %d %T %Z %Y")<CR>
 iab Ydatetime	<C-R>=strftime("%y%m%d %T")<CR>
 iab Ytime	<C-R>=strftime("%H:%M")<CR>
 
-iab "a &auml;
-iab "A &Auml;
-iab "o &ouml;
-iab "O &Ouml;
-iab "u &uuml;
-iab "U &Uuml;
-iab "s &szlig;
 
 " -------------------------------------------------------------------
 " 
@@ -126,6 +139,13 @@ iab "s &szlig;
 " 
 " -------------------------------------------------------------------
 
+  "if has("gui_macvim")
+    "macmenu &File.New\ Tab key=<nop>
+    "map <D-t> :CommandT<CR>
+  "endif
+
+nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>rt :CommandTFlush<cr>
 nnoremap <leader><space> :noh<cr>
 
 " use \r to run ruby code
@@ -245,6 +265,12 @@ if has("python")
     command! -nargs=+ Calc :py print <args>
     py from math import *
 endif
+
+if has("autocmd")
+    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
+endif
+
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

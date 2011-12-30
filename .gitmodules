@@ -43,3 +43,12 @@
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
 	url = https://github.com/tpope/vim-rails
+[submodule "bundle/git-time-lapse"]
+	path = bundle/git-time-lapse
+	url = http://www.tidraso.co.uk/repository/vim-plugin
+[submodule "bundle/clang"]
+	path = bundle/clang
+	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule "bundle/cocoa"]
+	path = bundle/cocoa
+	url = https://github.com/msanders/cocoa.vim.git

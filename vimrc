@@ -144,6 +144,8 @@ iab Ytime	<C-R>=strftime("%H:%M")<CR>
     "map <D-t> :CommandT<CR>
   "endif
 
+nmap <leader>gt :call TimeLapse()<cr>  
+
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>rt :CommandTFlush<cr>
 nnoremap <leader><space> :noh<cr>

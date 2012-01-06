@@ -6,8 +6,7 @@
 " -------------------------------------------------------------------
 "
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 
 syntax on
 filetype plugin on
@@ -24,7 +23,6 @@ autocmd BufReadPost *
 let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestEnhanced = 1
 "let g:SuperTabLongestHighlight = 1
-
 
 if has("macunix")
     if has("gui")
@@ -176,7 +174,7 @@ imap	<C-J>	<C-O>gqap
 vmap	<C-J>	gq
 
 " quick save
-map <C-s> execute :w<CR>
+"map <C-s> execute :w<CR>
 
 " shortcut to yank current line in normal mode
 nmap yl y1$
@@ -251,8 +249,16 @@ imap <D-k> <ESC>ko
 " return to normal mode
 map <C-b> <ESC>o<ESC>
 
+set winminheight=0
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
 "call make
 "map <C-m> :!make<CR>
+
+" move line down
+noremap \j :m+<CR>
+" move line down
+noremap \k :m-2<CR>
 
 "alter the errorformat slightly so the error
 "highlightning plugin can differentiate between 

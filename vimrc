@@ -27,7 +27,9 @@ let g:SuperTabLongestEnhanced = 1
 if has("macunix")
     if has("gui")
         set autochdir
-        set guifont=Inconsolata:h14
+        "set guifont=Inconsolata:h14
+        set guifont=Inconsolata\ for\ Powerline:h14
+        let g:Powerline_symbols = 'fancy'
     endif
 endif
 
@@ -53,7 +55,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
+"set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 set laststatus=2
 set background=light
 set incsearch
@@ -91,6 +93,7 @@ set noswapfile
 let OmniCpp_ShowPrototypeInAbbr=1
 let TList_Process_File_Always=1
 let TList_Display_Prototype=1
+let Tlist_Show_One_File=1
 
 " slimv settings
 "
@@ -99,6 +102,9 @@ let g:paredit_mode=0
 let g:slimv_impl='sbcl'
 let g:slimv_ctags='/usr/local/bin/ctags'
 let g:lisp_rainbow=1
+
+" powerline settings
+let g:cfi_disable=1
 
 
 " -------------------------------------------------------------------

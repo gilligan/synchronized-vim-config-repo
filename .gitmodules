@@ -64,3 +64,12 @@
 [submodule "bundle/cfi"]
 	path = bundle/cfi
 	url = https://github.com/vim-scripts/current-func-info.vim.git
+[submodule "bundle/tinybufexpl"]
+	path = bundle/tinybufexpl
+	url = https://github.com/vim-scripts/TinyBufferExplorer.git
+[submodule "ctrlp.vim"]
+	path = ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "bundle/ctrlp"]
+	path = bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git

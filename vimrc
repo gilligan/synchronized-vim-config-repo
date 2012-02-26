@@ -18,6 +18,10 @@ autocmd BufReadPost *
             \   exe "normal g`\"" | 
             \ endif 
 
+" -------------------------------------
+" super tab plugin settings
+" -------------------------------------
+
 "let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabNoCompleteAfter = ['\s']
@@ -33,9 +37,9 @@ if has("macunix")
     endif
 endif
 
-if has("linux")
-    set autochdir
-endif
+"if has("linux")
+    "set autochdir
+"endif
 
 set scrolloff=3
 set gdefault
@@ -54,8 +58,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-"set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 set laststatus=2
 set background=light
 set incsearch
@@ -104,8 +106,13 @@ let g:slimv_ctags='/usr/local/bin/ctags'
 let g:lisp_rainbow=1
 
 " powerline settings
-let g:cfi_disable=1
+"let g:cfi_disable=1
 
+" ctrlp setings
+"
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_root_markers = ['Development/']
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 
 " -------------------------------------------------------------------
 " 
@@ -147,6 +154,8 @@ iab Ytime	<C-R>=strftime("%H:%M")<CR>
     "macmenu &File.New\ Tab key=<nop>
     "map <D-t> :CommandT<CR>
   "endif
+
+imap <c-g> <esc>:tag 
 
 nmap <leader>gt :call TimeLapse()<cr>  
 
@@ -281,9 +290,13 @@ if has("python")
 endif
 
 if has("autocmd")
-    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
+    autocmd Filetype java call SuperTabSetDefaultCompletionType("<c-x><c-u>")
 endif
+
+"if has("autocmd")
+"    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+"    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
+"endif
 
 
 "source ~/.vim/misc-functions.vim

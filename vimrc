@@ -296,6 +296,9 @@ endif
 " automatically source vimrc after writing to it
 au BufWritePost .vimrc so ~/.vimrc
 
+" use ; to enter command mode
+nnoremap ; :
+
 "if has("autocmd")
 "    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 "    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo

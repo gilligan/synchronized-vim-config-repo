@@ -293,6 +293,9 @@ if has("autocmd")
     autocmd Filetype java call SuperTabSetDefaultCompletionType("<c-x><c-u>")
 endif
 
+" automatically source vimrc after writing to it
+au BufWritePost .vimrc so ~/.vimrc
+
 "if has("autocmd")
 "    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 "    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo

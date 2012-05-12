@@ -28,9 +28,10 @@ let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestEnhanced = 1
 "let g:SuperTabLongestHighlight = 1
 
+set autochdir
+
 if has("macunix")
     if has("gui")
-        set autochdir
         "set guifont=Inconsolata:h14
         set guifont=Inconsolata\ for\ Powerline:h14
         let g:Powerline_symbols = 'fancy'
@@ -38,7 +39,7 @@ if has("macunix")
 endif
 
 "if has("linux")
-    "set autochdir
+"set autochdir
 "endif
 
 set scrolloff=3
@@ -85,12 +86,19 @@ set guioptions-=L
 
 set nobackup
 set noswapfile
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " -------------------------------------------------------------------
 "
 " plugin settings
 "
 " -------------------------------------------------------------------
+
+" SingleCompile settings
+"
+
+nmap <F9> :SCCompile<cr>
+nmap <F10> :SCCompileRun<cr>
 
 let OmniCpp_ShowPrototypeInAbbr=1
 let TList_Process_File_Always=1
@@ -111,8 +119,13 @@ let g:lisp_rainbow=1
 " ctrlp setings
 "
 let g:ctrlp_working_path_mode = 2
-let g:ctrlp_root_markers = ['Development/']
+let g:ctrlp_root_markers = ['.root_dir']
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$|\.dylib$',
+  \ }
 
 " -------------------------------------------------------------------
 " 
@@ -150,10 +163,10 @@ iab Ytime	<C-R>=strftime("%H:%M")<CR>
 " 
 " -------------------------------------------------------------------
 
-  "if has("gui_macvim")
-    "macmenu &File.New\ Tab key=<nop>
-    "map <D-t> :CommandT<CR>
-  "endif
+"if has("gui_macvim")
+"macmenu &File.New\ Tab key=<nop>
+"map <D-t> :CommandT<CR>
+"endif
 
 imap <c-g> <esc>:tag 
 
@@ -247,7 +260,7 @@ nmap <F4> :new<CR>
 map <F5> :setlocal spell! spelllang=en_us,de<cr>
 
 " create tag file
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iafS --extra=+q .<CR>
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iafS --extra=+qf .<CR>
 
 "command to close a buffer but keep the window/split as it was
 com! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
@@ -275,6 +288,10 @@ noremap \j :m+<CR>
 " move line down
 noremap \k :m-2<CR>
 
+" list lines containing
+" word under cursor
+map ,l [I:let nr = input("select: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
 "alter the errorformat slightly so the error
 "highlightning plugin can differentiate between 
 "warnings and errors
@@ -298,6 +315,20 @@ au BufWritePost .vimrc so ~/.vimrc
 
 " use ; to enter command mode
 nnoremap ; :
+
+" resize splits when window is resized
+au VimResized * exe "normal! \<c-w>="
+
+augroup Binary
+    au!
+    au BufReadPre  *.bin let &bin=1
+    au BufReadPost *.bin if &bin | %!xxd
+    au BufReadPost *.bin set ft=xxd | endif
+    au BufWritePre *.bin if &bin | %!xxd -r
+    au BufWritePre *.bin endif
+    au BufWritePost *.bin if &bin | %!xxd
+    au BufWritePost *.bin set nomod | endif
+augroup END
 
 "if has("autocmd")
 "    autocmd Filetype java setlocal omnifunc=javacomplete#Complete

@@ -241,6 +241,7 @@ map ,dx :Dox<CR>
 " indentation of { } block
 nmap \id =%
 
+imap <C-L> @@@<ESC>hhkywjl?@@@<CR>P/@@@<CR>3s
 
 " open Explorer on <F2>
 imap <F2> <ESC>:Exp<CR>

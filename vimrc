@@ -22,11 +22,9 @@ autocmd BufReadPost *
 " super tab plugin settings
 " -------------------------------------
 
-"let g:SuperTabDefaultCompletionType = "context"
-"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestEnhanced = 1
-"let g:SuperTabLongestHighlight = 1
 
 set autochdir
 

@@ -76,3 +76,9 @@
 [submodule "bundle/threesome"]
 	path = bundle/threesome
 	url = https://github.com/sjl/threesome.vim.git
+[submodule "bundle/ri"]
+	path = bundle/ri
+	url = https://github.com/danchoi/ri.vim.git
+[submodule "bundle/vim-eunuch"]
+	path = bundle/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git

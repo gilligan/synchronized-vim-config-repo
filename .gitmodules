@@ -82,3 +82,9 @@
 [submodule "bundle/vim-eunuch"]
 	path = bundle/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
+[submodule "bundle/vim-ruby"]
+	path = bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "bundle/vimclojure"]
+	path = bundle/vimclojure
+	url = https://github.com/vim-scripts/VimClojure.git

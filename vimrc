@@ -99,6 +99,10 @@ let g:vimclojure#ParenRainbow = 1
 let vimclojure#NailgunClient = "/usr/local/bin/ng"
 let vimclojure#WantNailgun = 1
 
+" syntastic settings
+"
+let g:syntastic_javascript_checker="jshint"
+
 " SingleCompile settings
 "
 

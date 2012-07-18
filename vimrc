@@ -18,6 +18,7 @@ autocmd BufReadPost *
             \   exe "normal g`\"" | 
             \ endif 
 
+
 " -------------------------------------
 " super tab plugin settings
 " -------------------------------------
@@ -28,13 +29,11 @@ let g:SuperTabLongestEnhanced = 1
 
 set autochdir
 
-if has("macunix")
     if has("gui")
         "set guifont=Inconsolata:h14
-        set guifont=Inconsolata\ for\ Powerline:h14
+        set guifont=Inconsolata-dz\ for\ Powerline\ Medium\ 10
         let g:Powerline_symbols = 'fancy'
     endif
-endif
 
 "if has("linux")
 "set autochdir
@@ -73,7 +72,6 @@ set incsearch
 set hlsearch
 set nohidden
 set noerrorbells
-set visualbell
 set t_vb=
 
 set guioptions-=r
@@ -117,7 +115,7 @@ let g:lisp_rainbow=1
 " ctrlp setings
 "
 let g:ctrlp_working_path_mode = 2
-let g:ctrlp_root_markers = ['.root_dir']
+let g:ctrlp_root_markers = ['Development/','.project', '.root_dir']
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_custom_ignore = {
@@ -140,13 +138,13 @@ function! MakeSpacelessIabbrev(from, to)
     execute "iabbrev <silent> ".a:from." ".a:to."<C-R>=EatChar('\\s')<CR>"
 endfunction
 
-call MakeSpacelessIabbrev('"a', 'ä')
-call MakeSpacelessIabbrev('"A', 'Ä')
-call MakeSpacelessIabbrev('"o', 'ö')
-call MakeSpacelessIabbrev('"O', 'Ö')
-call MakeSpacelessIabbrev('"u', 'ü')
-call MakeSpacelessIabbrev('"U', 'Ü')
-call MakeSpacelessIabbrev('"s', 'ß')
+"call MakeSpacelessIabbrev('"a', 'ä')
+"call MakeSpacelessIabbrev('"A', 'Ä')
+"call MakeSpacelessIabbrev('"o', 'ö')
+"call MakeSpacelessIabbrev('"O', 'Ö')
+"call MakeSpacelessIabbrev('"u', 'ü')
+"call MakeSpacelessIabbrev('"U', 'Ü')
+"call MakeSpacelessIabbrev('"s', 'ß')
 
 iab Ydate	<C-R>=strftime("%y%m%d")<CR>
 iab Ydated	<C-R>=strftime("%Y-%m-%d")<CR>

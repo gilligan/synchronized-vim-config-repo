@@ -88,3 +88,9 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "bundle/jasmine"]
+	path = bundle/jasmine
+	url = https://github.com/claco/jasmine.vim.git

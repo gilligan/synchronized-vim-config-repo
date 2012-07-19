@@ -22,7 +22,7 @@ autocmd BufReadPost *
 " -------------------------------------
 " super tab plugin settings
 " -------------------------------------
-
+set completeopt=menu,preview,longest
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestEnhanced = 1
@@ -89,6 +89,17 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " plugin settings
 "
 " -------------------------------------------------------------------
+
+" clojure settings
+"
+let g:vimclojure#HighlightBuiltins = 1
+let g:vimclojure#ParenRainbow = 1
+let vimclojure#NailgunClient = "/usr/local/bin/ng"
+let vimclojure#WantNailgun = 1
+
+" syntastic settings
+"
+let g:syntastic_javascript_checker="jshint"
 
 " SingleCompile settings
 "
@@ -297,6 +308,7 @@ let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat
 "autocmd FileType ruby set omnifunc=rubycomplete#Complete
 "autocmd FileType ruby let g:rubycomplete_buffer_loading=1
 "autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 if has("python")
     command! -nargs=+ Calc :py print <args>

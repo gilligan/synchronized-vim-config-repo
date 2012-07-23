@@ -127,7 +127,7 @@ let g:lisp_rainbow=1
 " ctrlp setings
 "
 let g:ctrlp_working_path_mode = 2
-let g:ctrlp_root_markers = ['Development/','.project', '.root_dir']
+let g:ctrlp_root_markers = ['.git','.project_root']
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_custom_ignore = {
@@ -329,16 +329,16 @@ nnoremap ; :
 " resize splits when window is resized
 au VimResized * exe "normal! \<c-w>="
 
-augroup Binary
-    au!
-    au BufReadPre  *.bin let &bin=1
-    au BufReadPost *.bin if &bin | %!xxd
-    au BufReadPost *.bin set ft=xxd | endif
-    au BufWritePre *.bin if &bin | %!xxd -r
-    au BufWritePre *.bin endif
-    au BufWritePost *.bin if &bin | %!xxd
-    au BufWritePost *.bin set nomod | endif
-augroup END
+"augroup Binary
+"    au!
+"    au BufReadPre  *.bin let &bin=1
+"    au BufReadPost *.bin if &bin | %!xxd
+"    au BufReadPost *.bin set ft=xxd | endif
+"    au BufWritePre *.bin if &bin | %!xxd -r
+"    au BufWritePre *.bin endif
+"    au BufWritePost *.bin if &bin | %!xxd
+"    au BufWritePost *.bin set nomod | endif
+"augroup END
 
 "if has("autocmd")
 "    autocmd Filetype java setlocal omnifunc=javacomplete#Complete

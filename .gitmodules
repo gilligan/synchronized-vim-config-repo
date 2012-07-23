@@ -18,7 +18,6 @@
 	path = bundle/taglist-plus
 	url = https://github.com/vim-scripts/taglist-plus.git
         ignore = dirty
-
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
@@ -88,9 +87,9 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = git://github.com/majutsushi/tagbar
 [submodule "bundle/jasmine"]
 	path = bundle/jasmine
 	url = https://github.com/claco/jasmine.vim.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git

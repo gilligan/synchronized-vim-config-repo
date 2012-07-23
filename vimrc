@@ -39,6 +39,7 @@ set autochdir
 "set autochdir
 "endif
 
+set ambiwidth=double
 set scrolloff=3
 set gdefault
 set ignorecase

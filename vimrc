@@ -150,6 +150,9 @@ function! MakeSpacelessIabbrev(from, to)
     execute "iabbrev <silent> ".a:from." ".a:to."<C-R>=EatChar('\\s')<CR>"
 endfunction
 
+autocmd Filetype javascript call MakeSpacelessIabbrev('function(', 'function (')
+autocmd Filetype javascript call MakeSpacelessIabbrev(',',', ')
+
 "call MakeSpacelessIabbrev('"a', 'ä')
 "call MakeSpacelessIabbrev('"A', 'Ä')
 "call MakeSpacelessIabbrev('"o', 'ö')
@@ -164,6 +167,11 @@ iab Ydatel	<C-R>=strftime("%a %b %d %T %Z %Y")<CR>
 iab Ydatetime	<C-R>=strftime("%y%m%d %T")<CR>
 iab Ytime	<C-R>=strftime("%H:%M")<CR>
 
+" -------------------------------------------------------------------
+" commands
+" -------------------------------------------------------------------
+"autocmd FileType javascript command! Fixjs :%!fixmyjs %:p
+"map <C-f> :execute ":w !fixmyjs " . expand("%")<CR>:edit<CR>
 
 " -------------------------------------------------------------------
 " 

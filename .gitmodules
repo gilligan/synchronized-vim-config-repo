@@ -103,6 +103,6 @@
 [submodule "bundle/vim-bebop"]
 	path = bundle/vim-bebop
 	url = https://github.com/gilligan/vim-bebop.git
-[submodule "bundle/js-beautify"]
+[submodule "bundle/vim-jsbeautify"]
 	path = bundle/js-beautify
 	url = https://github.com/gilligan/jsbeautify.git

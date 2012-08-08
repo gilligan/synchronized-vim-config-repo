@@ -323,6 +323,10 @@ let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat
 "autocmd FileType ruby let g:rubycomplete_buffer_loading=1
 "autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+
+" jsbeautify settings
+let g:jsbeautify = {'indent_size':4, 'indent_char': ' '}
 
 if has("python")
     command! -nargs=+ Calc :py print <args>
@@ -341,6 +345,8 @@ nnoremap ; :
 
 " resize splits when window is resized
 au VimResized * exe "normal! \<c-w>="
+
+
 
 augroup Binary
     au!

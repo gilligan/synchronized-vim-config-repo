@@ -8,6 +8,9 @@
 
 call pathogen#infect()
 
+let g:bebop_enabled=1
+let g:bebop_enable_js=1
+
 syntax on
 filetype plugin on
 filetype indent on

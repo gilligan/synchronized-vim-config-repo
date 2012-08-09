@@ -109,3 +109,6 @@
 [submodule "bundle/snippets-complete"]
 	path = bundle/snippets-complete
 	url = https://github.com/Shougo/neocomplcache-snippets-complete.git
+[submodule "bundle/vim-space"]
+	path = bundle/vim-space
+	url = https://github.com/zeekay/vim-space.git

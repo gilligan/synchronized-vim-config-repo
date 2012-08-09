@@ -348,8 +348,5 @@ au VimResized * exe "normal! \<c-w>="
 "    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
 "endif
 
-source ~/vimrc/bundle/a_syntastic/syntax_checkers/javascript.vim
-source ~/vimrc/bundle/a_syntastic/syntax_checkers/javascript/jshint.vim   
-
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

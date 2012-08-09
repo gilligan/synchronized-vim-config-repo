@@ -33,15 +33,10 @@ set autochdir
 
 if has("macunix")
     if has("gui")
-        "set guifont=Inconsolata:h14
         set guifont=Inconsolata\ for\ Powerline:h14
         let g:Powerline_symbols = 'fancy'
     endif
 endif
-
-"if has("linux")
-"set autochdir
-"endif
 
 set ambiwidth=double
 set scrolloff=3
@@ -158,14 +153,6 @@ endfunction
 autocmd Filetype javascript call MakeSpacelessIabbrev('function(', 'function (')
 autocmd Filetype javascript call MakeSpacelessIabbrev(',',', ')
 
-"call MakeSpacelessIabbrev('"a', 'ä')
-"call MakeSpacelessIabbrev('"A', 'Ä')
-"call MakeSpacelessIabbrev('"o', 'ö')
-"call MakeSpacelessIabbrev('"O', 'Ö')
-"call MakeSpacelessIabbrev('"u', 'ü')
-"call MakeSpacelessIabbrev('"U', 'Ü')
-"call MakeSpacelessIabbrev('"s', 'ß')
-
 iab Ydate	<C-R>=strftime("%y%m%d")<CR>
 iab Ydated	<C-R>=strftime("%Y-%m-%d")<CR>
 iab Ydatel	<C-R>=strftime("%a %b %d %T %Z %Y")<CR>
@@ -201,9 +188,6 @@ nnoremap <leader><space> :noh<cr>
 nmap \r :rubyf %:p<CR>    
 let g:rct_completion_use_fri = 1
 
-" use jj to escape
-inoremap jj <Esc>
-
 " maximize window
 map ,M <C-W>_   
 
@@ -217,14 +201,6 @@ map <C-Down> <C-W>j<C-W>_
 map <C-Left> <C-W>h<C-W>_
 map <C-Right> <C-W>l<C-W>_
 
-" shortcut for formatting paragraph
-map	<C-J>	gqap
-imap	<C-J>	<C-O>gqap
-vmap	<C-J>	gq
-
-" quick save
-"map <C-s> execute :w<CR>
-
 " shortcut to yank current line in normal mode
 nmap yl y1$
 
@@ -234,59 +210,13 @@ map <C-i> mA1=G'A
 " paste clipboard contents
 map ,p "*p
 
-" open file explorer in current buffer
-map ,e :Exp<CR>
-
-" open file explorer in split window
-map ,es :Sexp<CR>
-
-" open specified file in path
-map ,of :find<space>  
-
-" jump to previous/next vimgrep match
-map ,gp :cnext<CR>
-map ,gn :cnext<CR>
-
-" latex mappings:
-map ,vt :silent !evince %:r.pdf<CR>
-map ,ct :!pdflatex %<CR>
 
 " snes help mappings:
 nmap  ,fr :execute 'help ' . expand('<cword>')<CR>
 nmap  ,q  :bd<CR>
 
-" parenthize word with " "
-map	,,	    maa0<ESC>mbbma$a x<ESC>`awgebi"<ESC>ea"<ESC>$xx`blx`a
-
 " add doxygen comment template
 map ,dx :Dox<CR>
-
-" indentation of { } block
-nmap \id =%
-
-imap <C-L> @@@<ESC>hhkywjl?@@@<CR>P/@@@<CR>3s
-
-" open Explorer on <F2>
-imap <F2> <ESC>:Exp<CR>
-nmap <F2> :Exp<CR>
-
-" write buffer and compile
-imap <F3> <ESC>:sp\|make<CR>
-nmap <F3> :sp\|make<CR>
-
-" split new window
-imap <F4> <ESC>:new<CR>i
-nmap <F4> :new<CR>
-
-" enable/disable US spelling
-map <F5> :setlocal spell! spelllang=en_us,de<cr>
-
-" create tag file
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iafS --extra=+qf .<CR>
-
-"command to close a buffer but keep the window/split as it was
-com! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
-map ,kb :Kwbd<CR>
 
 map ,r :rubyf %<CR>
 
@@ -302,13 +232,10 @@ map <C-b> <ESC>o<ESC>
 set winminheight=0
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
-"call make
-"map <C-m> :!make<CR>
-
 " move line down
-noremap \j :m+<CR>
+map <C-l>j :m+<CR>=$
 " move line down
-noremap \k :m-2<CR>
+map <C-l>k :m-2<CR>=$
 
 " list lines containing
 " word under cursor
@@ -319,21 +246,11 @@ map ,l [I:let nr = input("select: ")<Bar>exe "normal " . nr ."[\t"<CR>
 "warnings and errors
 let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat 
 
-"autocmd FileType ruby set omnifunc=rubycomplete#Complete
-"autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-"autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-" jsbeautify settings
-let g:jsbeautify = {'indent_size':4, 'indent_char': ' '}
 
 if has("python")
     command! -nargs=+ Calc :py print <args>
     py from math import *
-endif
-
-if has("autocmd")
-    autocmd Filetype java call SuperTabSetDefaultCompletionType("<c-x><c-u>")
 endif
 
 " automatically source vimrc after writing to it
@@ -345,6 +262,12 @@ nnoremap ; :
 " resize splits when window is resized
 au VimResized * exe "normal! \<c-w>="
 
+au FileType python setlocal omnifunc=pythoncomplete#Complete
+au FileType javascript,coffee setlocal omnifunc=javascriptcomplete#CompleteJS
+au FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+au FileType css setlocal omnifunc=csscomplete#CompleteCSS
+au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+au FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 
 
 augroup Binary
@@ -358,13 +281,12 @@ augroup Binary
     au BufWritePost *.bin set nomod | endif
 augroup END
 
-"if has("autocmd")
-"    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-"    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
-"endif
+if has ('gui_running')
+    set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+    set list
+endif
 
-source ~/vimrc/bundle/a_syntastic/syntax_checkers/javascript.vim
-source ~/vimrc/bundle/a_syntastic/syntax_checkers/javascript/jshint.vim   
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim
+source ~/.vim/compl.vim

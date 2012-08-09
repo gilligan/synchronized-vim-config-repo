@@ -103,3 +103,9 @@
 [submodule "bundle/vim-bebop"]
 	path = bundle/vim-bebop
 	url = https://github.com/gilligan/vim-bebop.git
+[submodule "bundle/neocomplcache"]
+	path = bundle/neocomplcache
+	url = https://github.com/Shougo/neocomplcache.git
+[submodule "bundle/snippets-complete"]
+	path = bundle/snippets-complete
+	url = https://github.com/Shougo/neocomplcache-snippets-complete.git

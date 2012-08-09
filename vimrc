@@ -323,7 +323,6 @@ let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat
 "autocmd FileType ruby let g:rubycomplete_buffer_loading=1
 "autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
 " jsbeautify settings
 let g:jsbeautify = {'indent_size':4, 'indent_char': ' '}
@@ -364,6 +363,8 @@ augroup END
 "    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
 "endif
 
+source ~/vimrc/bundle/a_syntastic/syntax_checkers/javascript.vim
+source ~/vimrc/bundle/a_syntastic/syntax_checkers/javascript/jshint.vim   
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

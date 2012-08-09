@@ -281,6 +281,15 @@ augroup Binary
     au BufWritePost *.bin set nomod | endif
 augroup END
 
+" Remove Trailing Whitespace {{{
+func! s:StripTrailingWhitespace()
+    normal mZ
+    %s/\s\+$//e
+    normal `Z
+endf
+au FileType * au BufWritePre <buffer> :silent! call <SID>StripTrailingWhitespace()`
+" }}}
+
 if has ('gui_running')
     set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
     au Filetype javascript,python,ruby set list

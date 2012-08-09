@@ -287,6 +287,7 @@ if has ('gui_running')
 endif
 
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
+let g:chapa_default_mappings = 1
 
 
 "source ~/.vim/misc-functions.vim

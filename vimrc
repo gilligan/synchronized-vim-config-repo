@@ -283,8 +283,10 @@ augroup END
 
 if has ('gui_running')
     set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-    set list
+    au Filetype javascript,python,ruby set list
 endif
+
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
 
 
 "source ~/.vim/misc-functions.vim

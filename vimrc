@@ -1,8 +1,8 @@
 
 " -------------------------------------------------------------------
-" 
+"
 " global settings
-" 
+"
 " -------------------------------------------------------------------
 "
 
@@ -16,10 +16,10 @@ filetype plugin on
 filetype indent on
 
 "autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
-autocmd BufReadPost * 
-            \ if line("'\"") > 0 && line("'\"") <= line("$") | 
-            \   exe "normal g`\"" | 
-            \ endif 
+autocmd BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal g`\"" |
+            \ endif
 
 " -------------------------------------
 " super tab plugin settings
@@ -136,9 +136,9 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " -------------------------------------------------------------------
-" 
-" abbrevations 
-" 
+"
+" abbrevations
+"
 " -------------------------------------------------------------------
 
 function! EatChar(pat)
@@ -166,9 +166,9 @@ iab Ytime	<C-R>=strftime("%H:%M")<CR>
 "map <C-f> :execute ":w !fixmyjs " . expand("%")<CR>:edit<CR>
 
 " -------------------------------------------------------------------
-" 
-" mappings 
-" 
+"
+" mappings
+"
 " -------------------------------------------------------------------
 
 "if has("gui_macvim")
@@ -176,27 +176,27 @@ iab Ytime	<C-R>=strftime("%H:%M")<CR>
 "map <D-t> :CommandT<CR>
 "endif
 
-imap <c-g> <esc>:tag 
+imap <c-g> <esc>:tag
 
-nmap <leader>gt :call TimeLapse()<cr>  
+nmap <leader>gt :call TimeLapse()<cr>
 
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>rt :CommandTFlush<cr>
 nnoremap <leader><space> :noh<cr>
 
 " use \r to run ruby code
-nmap \r :rubyf %:p<CR>    
+nmap \r :rubyf %:p<CR>
 let g:rct_completion_use_fri = 1
 
 " maximize window
-map ,M <C-W>_   
+map ,M <C-W>_
 
 " go to start/end of line
 imap <C-E> <C-O>$
 imap <C-A> <C-O>0
 
 " use arrow keys for window navigation
-map <C-Up>   <C-W>k<C-W>_ 
+map <C-Up>   <C-W>k<C-W>_
 map <C-Down> <C-W>j<C-W>_
 map <C-Left> <C-W>h<C-W>_
 map <C-Right> <C-W>l<C-W>_
@@ -223,7 +223,7 @@ map ,r :rubyf %<CR>
 " move up one line
 " and insert new indented line
 " below with Command-k
-imap <D-k> <ESC>ko 
+imap <D-k> <ESC>ko
 
 " insert empty line and
 " return to normal mode
@@ -242,9 +242,9 @@ map <C-l>k :m-2<CR>=$
 map ,l [I:let nr = input("select: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
 "alter the errorformat slightly so the error
-"highlightning plugin can differentiate between 
+"highlightning plugin can differentiate between
 "warnings and errors
-let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat 
+let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
@@ -289,6 +289,14 @@ func! s:StripTrailingWhitespace()
 endf
 au FileType * au BufWritePre <buffer> :silent! call <SID>StripTrailingWhitespace()`
 " }}}
+
+
+func! s:FixFunctionDecl()
+    normal mZ
+    %s/function(/function\ (/e
+    normal `Z
+endf
+au FileType javascript au BufWritePre <buffer> :silent! call <SID>FixFunctionDecl()`
 
 if has ('gui_running')
     set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮

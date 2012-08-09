@@ -8,6 +8,9 @@
 
 call pathogen#infect()
 
+let g:bebop_enabled=1
+let g:bebop_enable_js=1
+
 syntax on
 filetype plugin on
 filetype indent on
@@ -319,6 +322,9 @@ let &errorformat="%f:%l: %t%*[^:]:%m," . &errorformat
 "autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
+" jsbeautify settings
+let g:jsbeautify = {'indent_size':4, 'indent_char': ' '}
+
 if has("python")
     command! -nargs=+ Calc :py print <args>
     py from math import *
@@ -337,22 +343,13 @@ nnoremap ; :
 " resize splits when window is resized
 au VimResized * exe "normal! \<c-w>="
 
-"augroup Binary
-"    au!
-"    au BufReadPre  *.bin let &bin=1
-"    au BufReadPost *.bin if &bin | %!xxd
-"    au BufReadPost *.bin set ft=xxd | endif
-"    au BufWritePre *.bin if &bin | %!xxd -r
-"    au BufWritePre *.bin endif
-"    au BufWritePost *.bin if &bin | %!xxd
-"    au BufWritePost *.bin set nomod | endif
-"augroup END
-
 "if has("autocmd")
 "    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 "    autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
 "endif
 
+source ~/vimrc/bundle/a_syntastic/syntax_checkers/javascript.vim
+source ~/vimrc/bundle/a_syntastic/syntax_checkers/javascript/jshint.vim   
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

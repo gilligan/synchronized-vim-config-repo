@@ -286,9 +286,15 @@ func! s:FixFunctionDecl()
 endf
 au FileType javascript au BufWritePre <buffer> :silent! call <SID>FixFunctionDecl()`
 
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter javascript match ExtraWhitespace /\s\+$/
+autocmd InsertEnter javascript match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave javascript match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave javascript call clearmatches()
+
 if has ('gui_running')
     set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-    au Filetype javascript,python,ruby set list
 endif
 
 imap <C-k> <Plug>(neocomplcache_snippets_expand)

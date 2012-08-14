@@ -22,6 +22,9 @@ autocmd BufReadPost *
             \ endif
 
 
+" command for reviewing issues
+command! -nargs=1 ReviewTicket :Glog --grep=<args> --
+
 " -------------------------------------
 " super tab plugin settings
 " -------------------------------------

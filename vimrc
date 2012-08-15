@@ -22,6 +22,10 @@ autocmd BufReadPost *
             \   exe "normal g`\"" |
             \ endif
 
+
+" command for reviewing issues
+command! -nargs=1 ReviewTicket :Glog --grep=<args> --
+
 " -------------------------------------
 " super tab plugin settings
 " -------------------------------------
@@ -32,12 +36,12 @@ let g:SuperTabLongestEnhanced = 1
 
 set autochdir
 
-if has("macunix")
     if has("gui")
-        set guifont=Inconsolata\ for\ Powerline:h14
+        "set guifont=Inconsolata:h14
+        set guifont=Inconsolata-dz\ for\ Powerline\ Medium\ 10
+        "set guifont=Inconsolata\ for\ Powerline:h14
         let g:Powerline_symbols = 'fancy'
     endif
-endif
 
 set ambiwidth=double
 set scrolloff=3
@@ -73,7 +77,6 @@ set incsearch
 set hlsearch
 set nohidden
 set noerrorbells
-set visualbell
 set t_vb=
 
 set guioptions-=r
@@ -128,7 +131,7 @@ let g:lisp_rainbow=1
 " ctrlp setings
 "
 let g:ctrlp_working_path_mode = 2
-let g:ctrlp_root_markers = ['.root_dir']
+let g:ctrlp_root_markers = ['.git','.project_root']
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_custom_ignore = {
@@ -270,18 +273,6 @@ au FileType css setlocal omnifunc=csscomplete#CompleteCSS
 au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 au FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 
-
-augroup Binary
-    au!
-    au BufReadPre  *.bin let &bin=1
-    au BufReadPost *.bin if &bin | %!xxd
-    au BufReadPost *.bin set ft=xxd | endif
-    au BufWritePre *.bin if &bin | %!xxd -r
-    au BufWritePre *.bin endif
-    au BufWritePost *.bin if &bin | %!xxd
-    au BufWritePost *.bin set nomod | endif
-augroup END
-
 " Remove Trailing Whitespace {{{
 func! s:StripTrailingWhitespace()
     normal mZ
@@ -299,9 +290,15 @@ func! s:FixFunctionDecl()
 endf
 au FileType javascript au BufWritePre <buffer> :silent! call <SID>FixFunctionDecl()`
 
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter javascript match ExtraWhitespace /\s\+$/
+autocmd InsertEnter javascript match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave javascript match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave javascript call clearmatches()
+
 if has ('gui_running')
     set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-    au Filetype javascript,python,ruby set list
 endif
 
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
@@ -312,4 +309,4 @@ let g:fugitive_stl_showuntrackedfiles = 1
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim
-source ~/.vim/compl.vim
+source ~/.vim/neo.vim

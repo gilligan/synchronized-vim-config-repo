@@ -118,3 +118,6 @@
 [submodule "bundle/chapa"]
 	path = bundle/chapa
 	url = https://github.com/alfredodeza/chapa.vim.git
+[submodule "bundle/patchreview"]
+	path = bundle/patchreview
+	url = https://github.com/junkblocker/patchreview-vim.git

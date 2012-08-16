@@ -33,6 +33,9 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabNoCompleteAfter = ['\s']
 let g:SuperTabLongestEnhanced = 1
 
+map <F2> :NERDTreeToggle<CR>
+map <F3> :TagbarToggle<CR>
+set nofoldenable
 set autochdir
 
     if has("gui")

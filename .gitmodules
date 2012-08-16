@@ -132,3 +132,6 @@
 [submodule "bundle/vim-haml"]
 	path = bundle/vim-haml
 	url = https://github.com/tpope/vim-haml.git
+[submodule "bundle/camelCaseMotion"]
+	path = bundle/camelCaseMotion
+	url = https://github.com/bkad/CamelCaseMotion.git

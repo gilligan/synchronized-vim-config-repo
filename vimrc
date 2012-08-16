@@ -39,12 +39,15 @@ map <F3> :TagbarToggle<CR>
 set nofoldenable
 set autochdir
 
-    if has("gui")
-        "set guifont=Inconsolata:h14
+if has("gui")
+    let g:Powerline_symbols = 'fancy'
+    if has("gui_macvim")
+        set guifont=Inconsolata\ for\ Powerline:h14
+    else
         set guifont=Inconsolata-dz\ for\ Powerline\ Medium\ 10
-        "set guifont=Inconsolata\ for\ Powerline:h14
-        let g:Powerline_symbols = 'fancy'
+        "set guifont=Inconsolata:h14
     endif
+endif
 
 set ambiwidth=double
 set scrolloff=3
@@ -306,9 +309,6 @@ endif
 
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 let g:chapa_default_mappings = 1
-let g:fugitive_stl_showdirtystate = 1
-let g:fugitive_stl_showstashstate = 1
-let g:fugitive_stl_showuntrackedfiles = 1
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

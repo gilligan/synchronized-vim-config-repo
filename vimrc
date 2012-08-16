@@ -6,6 +6,7 @@
 " -------------------------------------------------------------------
 "
 
+let g:complType=1
 call pathogen#infect()
 
 let g:bebop_enabled=1
@@ -305,7 +306,9 @@ endif
 
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 let g:chapa_default_mappings = 1
-
+let g:fugitive_stl_showdirtystate = 1
+let g:fugitive_stl_showstashstate = 1
+let g:fugitive_stl_showuntrackedfiles = 1
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

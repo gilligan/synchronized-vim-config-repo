@@ -26,14 +26,6 @@ autocmd BufReadPost *
 " command for reviewing issues
 command! -nargs=1 ReviewTicket :Glog --grep=<args> --
 
-" -------------------------------------
-" super tab plugin settings
-" -------------------------------------
-set completeopt=menu,preview,longest
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabNoCompleteAfter = ['\s']
-let g:SuperTabLongestEnhanced = 1
-
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
 set nofoldenable

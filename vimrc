@@ -16,6 +16,14 @@ syntax on
 filetype plugin on
 filetype indent on
 
+omap <silent> iw <Plug>CamelCaseMotion_iw
+xmap <silent> iw <Plug>CamelCaseMotion_iw
+omap <silent> ib <Plug>CamelCaseMotion_ib
+xmap <silent> ib <Plug>CamelCaseMotion_ib
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
+
+
 "autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 autocmd BufReadPost *
             \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -26,25 +34,20 @@ autocmd BufReadPost *
 " command for reviewing issues
 command! -nargs=1 ReviewTicket :Glog --grep=<args> --
 
-" -------------------------------------
-" super tab plugin settings
-" -------------------------------------
-set completeopt=menu,preview,longest
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabNoCompleteAfter = ['\s']
-let g:SuperTabLongestEnhanced = 1
-
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
 set nofoldenable
 set autochdir
 
-    if has("gui")
-        "set guifont=Inconsolata:h14
+if has("gui")
+    let g:Powerline_symbols = 'fancy'
+    if has("gui_macvim")
+        set guifont=Inconsolata\ for\ Powerline:h14
+    else
         set guifont=Inconsolata-dz\ for\ Powerline\ Medium\ 10
-        "set guifont=Inconsolata\ for\ Powerline:h14
-        let g:Powerline_symbols = 'fancy'
+        "set guifont=Inconsolata:h14
     endif
+endif
 
 set ambiwidth=double
 set scrolloff=3
@@ -306,9 +309,6 @@ endif
 
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 let g:chapa_default_mappings = 1
-let g:fugitive_stl_showdirtystate = 1
-let g:fugitive_stl_showstashstate = 1
-let g:fugitive_stl_showuntrackedfiles = 1
 
 "source ~/.vim/misc-functions.vim
 "source ~/.vim/snes.vim

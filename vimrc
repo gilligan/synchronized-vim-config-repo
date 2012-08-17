@@ -288,7 +288,7 @@ au FileType * au BufWritePre <buffer> :silent! call <SID>StripTrailingWhitespace
 
 func! s:FixFunctionDecl()
     normal mZ
-    %s/function(/function\ (/e
+    %s/\ function(/function\ (/e
     normal `Z
 endf
 au FileType javascript au BufWritePre <buffer> :silent! call <SID>FixFunctionDecl()`

@@ -36,6 +36,8 @@ command! -nargs=1 ReviewTicket :Glog --grep=<args> --
 
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
+map <F4> :BebopJsEval<CR>
+
 set nofoldenable
 set autochdir
 
